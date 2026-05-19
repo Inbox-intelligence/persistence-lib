@@ -13,8 +13,8 @@ import java.time.Instant;
         name = "cluster",
         uniqueConstraints = {
                 @UniqueConstraint(
-                        name = "uq_cluster_mailbox_label",
-                        columnNames = {"fk_gmail_mailbox_id", "cluster_label"}
+                        name = "uq_cluster_mailbox_index",
+                        columnNames = {"fk_gmail_mailbox_id", "cluster_index"}
                 )
         },
         indexes = {
@@ -35,8 +35,8 @@ public class Cluster {
     @Column(name = "fk_gmail_mailbox_id", nullable = false)
     private Long gmailMailboxId;
 
-    @Column(name = "cluster_label", nullable = false)
-    private Integer clusterLabel;
+    @Column(name = "cluster_index", nullable = false)
+    private Integer clusterIndex;
 
     @Column(name = "email_count", nullable = false)
     private Integer emailCount;
