@@ -39,7 +39,12 @@ public class EmailEnrichmentService {
     }
 
     @Transactional
-    public void bulkAssignCluster(List<Long> ids, Long clusterId, ClusterAssignmentType type) {
-        repository.bulkAssignCluster(ids, clusterId, type, Instant.now());
+    public void bulkAssignCluster(List<Long> ids, Long clusterId) {
+        repository.bulkAssignCluster(ids, clusterId);
+    }
+
+    @Transactional
+    public void bulkUnassignCluster(List<Long> ids) {
+        repository.bulkUnassignCluster(ids);
     }
 }

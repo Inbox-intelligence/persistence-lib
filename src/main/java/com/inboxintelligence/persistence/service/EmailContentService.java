@@ -46,6 +46,6 @@ public class EmailContentService {
 
     @Transactional
     public void bulkUpdateStatusAndNote(List<Long> emailContentIds, ProcessedStatus status, String note) {
-        repository.bulkUpdateStatusAndNote(emailContentIds, status, note, Instant.now());
+        repository.bulkUpdateStatusAndNote(emailContentIds, status, note);
     }
 }

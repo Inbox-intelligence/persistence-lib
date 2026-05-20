@@ -8,14 +8,15 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
 
 @Component
 @Slf4j
 @RequiredArgsConstructor
 public class LocalEmailStorageProvider implements EmailStorageProvider {
 
+    private static final int DEDUPLICATE_MAX_ATTEMPTS = 1000;
     private final EmailStorageProperties emailStorageProperties;
 
     @Override
@@ -121,8 +122,6 @@ public class LocalEmailStorageProvider implements EmailStorageProvider {
             throw new IllegalArgumentException("Invalid storage path: " + relativePath, e);
         }
     }
-
-    private static final int DEDUPLICATE_MAX_ATTEMPTS = 1000;
 
     private Path deduplicate(Path filePath) {
         if (!Files.exists(filePath)) {

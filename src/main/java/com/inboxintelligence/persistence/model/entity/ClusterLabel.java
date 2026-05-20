@@ -16,7 +16,7 @@ import java.time.Instant;
         },
         indexes = {
                 @Index(name = "idx_cluster_label_cluster", columnList = "fk_cluster_id"),
-                @Index(name = "idx_cluster_label_label",   columnList = "fk_label_id")
+                @Index(name = "idx_cluster_label_label", columnList = "fk_label_id")
         }
 )
 @Getter

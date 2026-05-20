@@ -20,8 +20,8 @@ import java.time.Instant;
         },
         indexes = {
                 @Index(name = "idx_label_mailbox", columnList = "fk_gmail_mailbox_id"),
-                @Index(name = "idx_label_source",  columnList = "source"),
-                @Index(name = "idx_label_active",  columnList = "is_active")
+                @Index(name = "idx_label_source", columnList = "source"),
+                @Index(name = "idx_label_active", columnList = "is_active")
         }
 )
 @Getter

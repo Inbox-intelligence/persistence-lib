@@ -19,12 +19,8 @@ public interface EmailContentRepository extends JpaRepository<EmailContent, Long
             UPDATE EmailContent ec
             SET ec.processedStatus = :status,
                 ec.processingNote  = :note,
-                ec.updatedAt       = :now
+                ec.updatedAt       = CURRENT_TIMESTAMP
             WHERE ec.id IN :ids
             """)
-    void bulkUpdateStatusAndNote(
-            @Param("ids")    List<Long> ids,
-            @Param("status") ProcessedStatus status,
-            @Param("note")   String note,
-            @Param("now")    Instant now);
+    void bulkUpdateStatusAndNote(@Param("ids") List<Long> ids, @Param("status") ProcessedStatus status, @Param("note") String note);
 }

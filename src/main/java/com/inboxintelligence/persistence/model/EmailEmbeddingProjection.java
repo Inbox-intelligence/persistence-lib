@@ -1,3 +1,4 @@
 package com.inboxintelligence.persistence.model;
 
-public record EmailEmbeddingProjection(Long id, float[] embedding) {}
+public record EmailEmbeddingProjection(Long id, float[] embedding) {
+}
