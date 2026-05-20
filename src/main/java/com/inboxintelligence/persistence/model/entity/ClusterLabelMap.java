@@ -7,7 +7,7 @@ import java.time.Instant;
 
 @Entity
 @Table(
-        name = "cluster_label",
+        name = "cluster_label_map",
         uniqueConstraints = {
                 @UniqueConstraint(
                         name = "uq_cluster_label",
@@ -24,7 +24,7 @@ import java.time.Instant;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClusterLabel {
+public class ClusterLabelMap {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
