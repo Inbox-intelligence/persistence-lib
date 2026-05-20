@@ -1,6 +1,5 @@
 package com.inboxintelligence.persistence.service;
 
-import com.inboxintelligence.persistence.model.LabelSource;
 import com.inboxintelligence.persistence.model.entity.Label;
 import com.inboxintelligence.persistence.repository.LabelRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +15,8 @@ public class LabelService {
     private final LabelRepository labelRepository;
 
     @Transactional(readOnly = true)
-    public List<Label> findByMailboxIdAndSource(Long gmailMailboxId, LabelSource source) {
-        return labelRepository.findByGmailMailboxIdAndSource(gmailMailboxId, source);
+    public List<Label> findByMailboxId(Long gmailMailboxId) {
+        return labelRepository.findByGmailMailboxId(gmailMailboxId);
     }
 
     @Transactional

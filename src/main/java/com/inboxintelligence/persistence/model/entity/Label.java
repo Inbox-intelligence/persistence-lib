@@ -1,6 +1,5 @@
 package com.inboxintelligence.persistence.model.entity;
 
-import com.inboxintelligence.persistence.model.LabelSource;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Array;
@@ -19,9 +18,7 @@ import java.time.Instant;
                 )
         },
         indexes = {
-                @Index(name = "idx_label_mailbox", columnList = "fk_gmail_mailbox_id"),
-                @Index(name = "idx_label_source", columnList = "source"),
-                @Index(name = "idx_label_active", columnList = "is_active")
+                @Index(name = "idx_label_mailbox", columnList = "fk_gmail_mailbox_id")
         }
 )
 @Getter
@@ -45,10 +42,6 @@ public class Label {
     @Column(name = "full_name", nullable = false, length = 1024)
     private String fullName;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "source", nullable = false, length = 16)
-    private LabelSource source;
-
     @Column(name = "description")
     private String description;
 
@@ -56,10 +49,6 @@ public class Label {
     @Array(length = 768)
     @Column(name = "reference_embedding")
     private float[] referenceEmbedding;
-
-    @Column(name = "is_active", nullable = false)
-    @Builder.Default
-    private Boolean isActive = true;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     @Builder.Default
