@@ -8,4 +8,6 @@ import java.util.List;
 public interface LabelRepository extends JpaRepository<Label, Long> {
 
     List<Label> findByGmailMailboxId(Long gmailMailboxId);
+
+    void deleteByGmailMailboxIdAndFullNameIn(Long gmailMailboxId, List<String> fullNames);
 }

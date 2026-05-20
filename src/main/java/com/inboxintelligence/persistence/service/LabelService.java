@@ -23,4 +23,9 @@ public class LabelService {
     public List<Label> saveAll(List<Label> labels) {
         return labelRepository.saveAll(labels);
     }
+
+    @Transactional
+    public void deleteByMailboxIdAndFullNames(Long gmailMailboxId, List<String> fullNames) {
+        labelRepository.deleteByGmailMailboxIdAndFullNameIn(gmailMailboxId, fullNames);
+    }
 }
