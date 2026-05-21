@@ -34,4 +34,9 @@ public class ClusterLabelMapService {
     public List<ClusterLabelMap> saveAll(List<ClusterLabelMap> clusterLabelMaps) {
         return clusterLabelMapRepository.saveAll(clusterLabelMaps);
     }
+
+    @Transactional
+    public void deleteByMailboxId(Long mailboxId) {
+        clusterLabelMapRepository.deleteByGmailMailboxId(mailboxId);
+    }
 }

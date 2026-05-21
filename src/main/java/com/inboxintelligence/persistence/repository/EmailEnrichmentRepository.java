@@ -14,6 +14,8 @@ public interface EmailEnrichmentRepository extends JpaRepository<EmailEnrichment
 
     Optional<EmailEnrichment> findByEmailContentId(Long emailContentId);
 
+    List<EmailEnrichment> findByClusterId(Long clusterId);
+
     @Query("""
             SELECT new com.inboxintelligence.persistence.model.EmailEmbeddingProjection(ee.id, ee.embedding)
             FROM EmailEnrichment ee

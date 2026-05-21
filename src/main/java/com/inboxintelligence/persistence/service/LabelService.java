@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +18,16 @@ public class LabelService {
     @Transactional(readOnly = true)
     public List<Label> findByMailboxId(Long gmailMailboxId) {
         return labelRepository.findByGmailMailboxId(gmailMailboxId);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<Label> findByMailboxIdAndFullName(Long gmailMailboxId, String fullName) {
+        return labelRepository.findByGmailMailboxIdAndFullName(gmailMailboxId, fullName);
+    }
+
+    @Transactional
+    public Label save(Label label) {
+        return labelRepository.save(label);
     }
 
     @Transactional

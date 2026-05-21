@@ -28,6 +28,11 @@ public class EmailEnrichmentService {
         return repository.findByEmailContentId(emailContentId);
     }
 
+    @Transactional(readOnly = true)
+    public List<EmailEnrichment> findByClusterId(Long clusterId) {
+        return repository.findByClusterId(clusterId);
+    }
+
     @Transactional
     public List<EmailEnrichment> saveAll(List<EmailEnrichment> enrichments) {
         return repository.saveAll(enrichments);

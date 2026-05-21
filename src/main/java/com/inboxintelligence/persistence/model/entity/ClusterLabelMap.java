@@ -30,13 +30,15 @@ public class ClusterLabelMap {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "fk_gmail_mailbox_id", nullable = false)
+    private Long gmailMailboxId;
+
     @Column(name = "fk_cluster_id", nullable = false, unique = true)
     private Long clusterId;
 
     @Column(name = "fk_label_id", nullable = false)
     private Long labelId;
 
-    // cosine similarity between cluster centroid and label reference_embedding
     @Column(name = "mapping_score")
     private Double mappingScore;
 

@@ -37,11 +37,18 @@ public class EmailContentService {
         return repository.save(emailContent);
     }
 
+    private static final int MAX_NOTE_LENGTH = 500;
+
     @Transactional
     public EmailContent updateStatusAndNote(EmailContent emailContent, ProcessedStatus status, String note) {
         emailContent.setProcessedStatus(status);
-        emailContent.setProcessingNote(note);
+        emailContent.setProcessingNote(truncate(note));
         return repository.save(emailContent);
+    }
+
+    private static String truncate(String note) {
+        if (note == null || note.length() <= MAX_NOTE_LENGTH) return note;
+        return note.substring(0, MAX_NOTE_LENGTH - 3) + "...";
     }
 
     @Transactional

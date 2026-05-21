@@ -37,13 +37,9 @@ public class Label {
 
     @Column(name = "display_name", nullable = false, length = 255)
     private String displayName;
-
-    // full path e.g. "Finance/Tax/2024"
+    
     @Column(name = "full_name", nullable = false, length = 1024)
     private String fullName;
-
-    @Column(name = "description")
-    private String description;
 
     @JdbcTypeCode(SqlTypes.VECTOR)
     @Array(length = 768)
