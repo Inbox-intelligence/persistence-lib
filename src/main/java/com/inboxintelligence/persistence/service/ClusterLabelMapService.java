@@ -34,14 +34,4 @@ public class ClusterLabelMapService {
     public List<ClusterLabelMap> saveAll(List<ClusterLabelMap> clusterLabelMaps) {
         return clusterLabelMapRepository.saveAll(clusterLabelMaps);
     }
-
-    @Transactional
-    public void deleteByClusterId(Long clusterId) {
-        clusterLabelMapRepository.deleteByClusterId(clusterId);
-    }
-
-    @Transactional
-    public void deleteByClusterIds(List<Long> clusterIds) {
-        clusterLabelMapRepository.deleteByClusterIdIn(clusterIds);
-    }
 }

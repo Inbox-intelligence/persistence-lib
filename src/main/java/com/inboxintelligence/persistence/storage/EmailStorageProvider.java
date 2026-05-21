@@ -10,4 +10,5 @@ public interface EmailStorageProvider {
 
     void deleteContent(String storagePath);
 
+    String providerName();
 }

@@ -15,4 +15,8 @@ public interface ClusterRepository extends JpaRepository<Cluster, Long> {
     @Modifying
     @Query("DELETE FROM Cluster c WHERE c.gmailMailboxId = :mailboxId")
     void deleteByGmailMailboxId(@Param("mailboxId") Long mailboxId);
+
+    @Modifying
+    @Query("UPDATE Cluster c SET c.emailCount = c.emailCount + 1, c.updatedAt = CURRENT_TIMESTAMP WHERE c.id = :id")
+    void incrementEmailCount(@Param("id") Long id);
 }

@@ -85,6 +85,11 @@ public class LocalEmailStorageProvider implements EmailStorageProvider {
     }
 
     @Override
+    public String providerName() {
+        return "local";
+    }
+
+    @Override
     public void deleteContent(String relativePath) {
 
         if (relativePath == null || relativePath.isBlank()) {

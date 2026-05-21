@@ -12,7 +12,4 @@ public interface ClusterLabelMapRepository extends JpaRepository<ClusterLabelMap
 
     List<ClusterLabelMap> findByLabelId(Long labelId);
 
-    void deleteByClusterId(Long clusterId);
-
-    void deleteByClusterIdIn(List<Long> clusterIds);
 }

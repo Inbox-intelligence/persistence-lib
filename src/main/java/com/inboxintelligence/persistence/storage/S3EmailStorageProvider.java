@@ -21,4 +21,9 @@ public class S3EmailStorageProvider implements EmailStorageProvider {
     public void deleteContent(String storagePath) {
         throw new UnsupportedOperationException("S3EmailStorageProvider is not implemented");
     }
+
+    @Override
+    public String providerName() {
+        return "s3";
+    }
 }

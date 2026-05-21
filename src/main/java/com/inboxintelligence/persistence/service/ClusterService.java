@@ -39,4 +39,9 @@ public class ClusterService {
     public void deleteByMailboxId(Long mailboxId) {
         repository.deleteByGmailMailboxId(mailboxId);
     }
+
+    @Transactional
+    public void incrementEmailCount(Long id) {
+        repository.incrementEmailCount(id);
+    }
 }
