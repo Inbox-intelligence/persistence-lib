@@ -1,6 +1,5 @@
 package com.inboxintelligence.persistence.service;
 
-import com.inboxintelligence.persistence.model.ClusterAssignmentType;
 import com.inboxintelligence.persistence.model.EmailEmbeddingProjection;
 import com.inboxintelligence.persistence.model.entity.EmailEnrichment;
 import com.inboxintelligence.persistence.repository.EmailEnrichmentRepository;
@@ -8,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
