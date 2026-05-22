@@ -23,6 +23,9 @@ public class EmailAttachment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "fk_gmail_mailbox_id", nullable = false)
+    private Long gmailMailboxId;
+
     @Column(name = "fk_email_content_id", nullable = false)
     private Long emailContentId;
 
