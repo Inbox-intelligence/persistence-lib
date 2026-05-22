@@ -13,4 +13,6 @@ public interface LabelRepository extends JpaRepository<Label, Long> {
     Optional<Label> findByGmailMailboxIdAndFullName(Long gmailMailboxId, String fullName);
 
     void deleteByGmailMailboxIdAndFullNameIn(Long gmailMailboxId, List<String> fullNames);
+
+    void deleteByGmailMailboxId(Long gmailMailboxId);
 }

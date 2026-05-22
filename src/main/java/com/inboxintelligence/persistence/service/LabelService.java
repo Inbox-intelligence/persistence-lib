@@ -39,4 +39,11 @@ public class LabelService {
     public void deleteByMailboxIdAndFullNames(Long gmailMailboxId, List<String> fullNames) {
         labelRepository.deleteByGmailMailboxIdAndFullNameIn(gmailMailboxId, fullNames);
     }
+
+    @Transactional
+    public void flushAndFillLabels(Long gmailMailboxId, List<Label> labels) {
+        labelRepository.deleteByGmailMailboxId(gmailMailboxId);
+        labelRepository.flush();
+        labelRepository.saveAll(labels);
+    }
 }
