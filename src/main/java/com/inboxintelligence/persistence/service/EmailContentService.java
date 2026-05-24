@@ -14,17 +14,16 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class EmailContentService {
 
-    private static final int MAX_NOTE_LENGTH = 500;
     private final EmailContentRepository repository;
-
-    private static String truncate(String note) {
-        if (note == null || note.length() <= MAX_NOTE_LENGTH) return note;
-        return note.substring(0, MAX_NOTE_LENGTH - 3) + "...";
-    }
 
     @Transactional(readOnly = true)
     public boolean existsByGmailMailboxIdAndMessageId(Long gmailMailboxId, String messageId) {
         return repository.existsByGmailMailboxIdAndMessageId(gmailMailboxId, messageId);
+    }
+
+    @Transactional(readOnly = true)
+    public List<String> findMessageIdsByGmailMailboxId(Long mailboxId) {
+        return repository.findMessageIdsByGmailMailboxId(mailboxId);
     }
 
     @Transactional(readOnly = true)
@@ -42,15 +41,9 @@ public class EmailContentService {
         return repository.save(emailContent);
     }
 
-    @Transactional
-    public EmailContent updateStatusAndNote(EmailContent emailContent, ProcessedStatus status, String note) {
-        emailContent.setProcessedStatus(status);
-        emailContent.setProcessingNote(truncate(note));
-        return repository.save(emailContent);
-    }
 
     @Transactional
-    public void bulkUpdateStatusAndNote(List<Long> emailContentIds, ProcessedStatus status, String note) {
-        repository.bulkUpdateStatusAndNote(emailContentIds, status, note);
+    public void bulkUpdateStatus(List<Long> emailContentIds, ProcessedStatus status) {
+        repository.bulkUpdateStatus(emailContentIds, status);
     }
 }

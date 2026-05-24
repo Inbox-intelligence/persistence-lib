@@ -36,14 +36,10 @@ public class EmailContent {
     @Column(name = "fk_gmail_mailbox_id", nullable = false)
     private Long gmailMailboxId;
 
-    @Column(name = "message_id", nullable = false, length = 1024)
-    private String messageId;
-
-    @Column(name = "thread_id", nullable = false, length = 1024)
-    private String threadId;
-
-    @Column(name = "parent_message_id", length = 1024)
-    private String parentMessageId;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "processed_status", nullable = false, length = 32)
+    @Builder.Default
+    private ProcessedStatus processedStatus = ProcessedStatus.EMAIL_RECEIVED;
 
     @Column(columnDefinition = "TEXT")
     private String subject;
@@ -57,35 +53,33 @@ public class EmailContent {
     @Column(name = "cc_address", columnDefinition = "TEXT")
     private String ccAddress;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "origin", length = 16)
-    private EmailOrigin origin;
-
-    @Column(name = "raw_message_path", length = 1024)
-    private String rawMessagePath;
-
-    @Column(name = "body_content_path", length = 1024)
-    private String bodyContentPath;
-
-    @Column(name = "body_html_content_path", length = 1024)
-    private String bodyHtmlContentPath;
-
-    @Column(name = "sanitized_content_path", length = 1024)
-    private String sanitizedContentPath;
-
     @Column(name = "sent_at")
     private Instant sentAt;
 
     @Column(name = "received_at")
     private Instant receivedAt;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "processed_status", nullable = false, length = 32)
-    @Builder.Default
-    private ProcessedStatus processedStatus = ProcessedStatus.EMAIL_RECEIVED;
+    @Column(name = "sanitized_content_path", length = 1024)
+    private String sanitizedContentPath;
 
-    @Column(name = "processing_note", length = 512)
-    private String processingNote;
+    @Column(name = "raw_content_path", length = 1024)
+    private String rawContentPath;
+
+    @Column(name = "raw_content_type", length = 16, insertable = false)
+    private String rawContentType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "origin", length = 16)
+    private EmailOrigin origin;
+
+    @Column(name = "message_id", nullable = false, length = 1024)
+    private String messageId;
+
+    @Column(name = "thread_id", nullable = false, length = 1024)
+    private String threadId;
+
+    @Column(name = "parent_message_id", length = 1024)
+    private String parentMessageId;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     @Builder.Default

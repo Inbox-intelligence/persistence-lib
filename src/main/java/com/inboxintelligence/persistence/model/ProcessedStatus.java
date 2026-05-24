@@ -2,7 +2,6 @@ package com.inboxintelligence.persistence.model;
 
 public enum ProcessedStatus {
 
-
     EMAIL_RECEIVED,
     CONTENT_SAVED,
     ATTACHMENT_SAVED,
@@ -12,6 +11,11 @@ public enum ProcessedStatus {
     SANITIZATION_STARTED,
     SANITIZATION_COMPLETED,
     SANITIZATION_FAILED,
+
+    PUBLISHED_FOR_NORMALIZATION,
+    NORMALIZATION_STARTED,
+    NORMALIZATION_COMPLETED,
+    NORMALIZATION_FAILED,
 
     PUBLISHED_FOR_EMBEDDING,
     EMBEDDING_STARTED,

@@ -13,13 +13,15 @@ public interface EmailContentRepository extends JpaRepository<EmailContent, Long
 
     boolean existsByGmailMailboxIdAndMessageId(Long gmailMailboxId, String messageId);
 
+    @Query("SELECT ec.messageId FROM EmailContent ec WHERE ec.gmailMailboxId = :mailboxId")
+    List<String> findMessageIdsByGmailMailboxId(@Param("mailboxId") Long mailboxId);
+
     @Modifying
     @Query("""
             UPDATE EmailContent ec
             SET ec.processedStatus = :status,
-                ec.processingNote  = :note,
                 ec.updatedAt       = CURRENT_TIMESTAMP
             WHERE ec.id IN :ids
             """)
-    void bulkUpdateStatusAndNote(@Param("ids") List<Long> ids, @Param("status") ProcessedStatus status, @Param("note") String note);
+    void bulkUpdateStatus(@Param("ids") List<Long> ids, @Param("status") ProcessedStatus status);
 }

@@ -34,13 +34,13 @@ public class EmailEnrichment {
     @Column(name = "fk_email_content_id", nullable = false, unique = true)
     private Long emailContentId;
 
+    @Column(name = "normalized_content", length = 1000)
+    private String normalizedContent;
+
     @JdbcTypeCode(SqlTypes.VECTOR)
     @Array(length = 768)
     @Column(name = "embedding")
     private float[] embedding;
-
-    @Column(name = "embedding_model", length = 64)
-    private String embeddingModel;
 
     @Column(name = "fk_cluster_id")
     private Long clusterId;
