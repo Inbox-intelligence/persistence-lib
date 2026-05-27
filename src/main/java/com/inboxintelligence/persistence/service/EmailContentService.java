@@ -1,6 +1,6 @@
 package com.inboxintelligence.persistence.service;
 
-import com.inboxintelligence.persistence.model.ProcessedStatus;
+import com.inboxintelligence.persistence.model.enums.ProcessedStatus;
 import com.inboxintelligence.persistence.model.entity.EmailContent;
 import com.inboxintelligence.persistence.repository.EmailContentRepository;
 import lombok.RequiredArgsConstructor;

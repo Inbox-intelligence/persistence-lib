@@ -1,7 +1,7 @@
 package com.inboxintelligence.persistence.model.entity;
 
-import com.inboxintelligence.persistence.model.EmailOrigin;
-import com.inboxintelligence.persistence.model.ProcessedStatus;
+import com.inboxintelligence.persistence.model.enums.EmailOrigin;
+import com.inboxintelligence.persistence.model.enums.ProcessedStatus;
 import jakarta.persistence.*;
 import lombok.*;
 

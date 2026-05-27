@@ -1,6 +1,6 @@
 package com.inboxintelligence.persistence.model.entity;
 
-import com.inboxintelligence.persistence.model.SyncStatus;
+import com.inboxintelligence.persistence.model.enums.SyncStatus;
 import jakarta.persistence.*;
 import lombok.*;
 

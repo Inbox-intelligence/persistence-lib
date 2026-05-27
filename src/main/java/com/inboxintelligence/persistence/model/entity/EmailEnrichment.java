@@ -1,6 +1,6 @@
 package com.inboxintelligence.persistence.model.entity;
 
-import com.inboxintelligence.persistence.model.ClusterAssignmentType;
+import com.inboxintelligence.persistence.model.enums.ClusterAssignmentType;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Array;

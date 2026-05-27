@@ -1,6 +1,5 @@
 package com.inboxintelligence.persistence.service;
 
-import com.inboxintelligence.persistence.model.EmbeddingDto;
 import com.inboxintelligence.persistence.model.entity.EmailEnrichment;
 import com.inboxintelligence.persistence.repository.EmailEnrichmentRepository;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +36,7 @@ public class EmailEnrichmentService {
     }
 
     @Transactional(readOnly = true)
-    public List<EmbeddingDto> findIdAndEmbeddingByGmailMailboxId(Long mailboxId) {
+    public List<Object[]> findIdAndEmbeddingByGmailMailboxId(Long mailboxId) {
         return repository.findIdAndEmbeddingByGmailMailboxId(mailboxId);
     }
 
