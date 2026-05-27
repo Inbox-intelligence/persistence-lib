@@ -28,7 +28,7 @@ public interface EmailEnrichmentRepository extends JpaRepository<EmailEnrichment
     @Query("""
             UPDATE EmailEnrichment ee
             SET ee.clusterId             = :clusterId,
-                ee.clusterAssignmentType = com.inboxintelligence.persistence.model.ClusterAssignmentType.BATCH,
+                ee.clusterAssignmentType = com.inboxintelligence.persistence.model.enums.ClusterAssignmentType.BATCH,
                 ee.clusterProbability    = NULL,
                 ee.updatedAt             = CURRENT_TIMESTAMP
             WHERE ee.id IN :ids
@@ -39,7 +39,7 @@ public interface EmailEnrichmentRepository extends JpaRepository<EmailEnrichment
     @Query("""
             UPDATE EmailEnrichment ee
             SET ee.clusterId             = NULL,
-                ee.clusterAssignmentType = com.inboxintelligence.persistence.model.ClusterAssignmentType.BATCH,
+                ee.clusterAssignmentType = com.inboxintelligence.persistence.model.enums.ClusterAssignmentType.BATCH,
                 ee.clusterProbability    = NULL,
                 ee.updatedAt             = CURRENT_TIMESTAMP
             WHERE ee.id IN :ids
