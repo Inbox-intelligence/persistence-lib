@@ -1,6 +1,8 @@
 package com.inboxintelligence.persistence.model.entity;
 
+import com.inboxintelligence.persistence.model.enums.Category;
 import com.inboxintelligence.persistence.model.enums.ClusterAssignmentType;
+import com.inboxintelligence.persistence.model.enums.Importance;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.Array;
@@ -34,11 +36,25 @@ public class EmailEnrichment {
     @Column(name = "fk_email_content_id", nullable = false, unique = true)
     private Long emailContentId;
 
-    @Column(name = "normalized_content", length = 1000)
+    @Column(name = "normalized_content", length = 5000)
     private String normalizedContent;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "importance", length = 8)
+    private Importance importance;
+
+    @Column(name = "importance_reason", length = 500)
+    private String importanceReason;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "category", length = 16)
+    private Category category;
+
+    @Column(name = "category_reason", length = 500)
+    private String categoryReason;
+
     @JdbcTypeCode(SqlTypes.VECTOR)
-    @Array(length = 768)
+    @Array(length = 1024)
     @Column(name = "embedding")
     private float[] embedding;
 

@@ -42,7 +42,7 @@ public class Cluster {
     private Integer emailCount;
 
     @JdbcTypeCode(SqlTypes.VECTOR)
-    @Array(length = 768)
+    @Array(length = 1024)
     @Column(name = "centroid", nullable = false)
     private float[] centroid;
 

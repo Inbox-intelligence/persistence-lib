@@ -42,7 +42,7 @@ public class Label {
     private String fullName;
 
     @JdbcTypeCode(SqlTypes.VECTOR)
-    @Array(length = 768)
+    @Array(length = 1024)
     @Column(name = "reference_embedding")
     private float[] referenceEmbedding;
 
