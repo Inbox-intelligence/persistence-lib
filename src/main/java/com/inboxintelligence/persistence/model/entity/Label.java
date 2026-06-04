@@ -41,6 +41,9 @@ public class Label {
     @Column(name = "full_name", nullable = false, length = 1024)
     private String fullName;
 
+    @Column(name = "gmail_label_id", length = 128)
+    private String gmailLabelId;
+
     @JdbcTypeCode(SqlTypes.VECTOR)
     @Array(length = 1024)
     @Column(name = "reference_embedding")

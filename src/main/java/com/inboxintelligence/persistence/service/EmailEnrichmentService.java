@@ -40,6 +40,11 @@ public class EmailEnrichmentService {
         return repository.findIdAndEmbeddingByGmailMailboxId(mailboxId);
     }
 
+    @Transactional(readOnly = true)
+    public List<Object[]> findGmailLabelIdAndMessageIdByGmailMailboxId(Long mailboxId) {
+        return repository.findGmailLabelIdAndMessageIdByGmailMailboxId(mailboxId);
+    }
+
     @Transactional
     public void bulkAssignCluster(List<Long> ids, Long clusterId) {
         repository.bulkAssignCluster(ids, clusterId);

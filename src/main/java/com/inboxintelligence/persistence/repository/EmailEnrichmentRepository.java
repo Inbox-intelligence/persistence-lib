@@ -24,6 +24,19 @@ public interface EmailEnrichmentRepository extends JpaRepository<EmailEnrichment
             """)
     List<Object[]> findIdAndEmbeddingByGmailMailboxId(@Param("mailboxId") Long mailboxId);
 
+    @Query("""
+            SELECT l.gmailLabelId, ec.messageId
+            FROM EmailEnrichment ee
+            JOIN EmailContent ec ON ee.emailContentId = ec.id
+            JOIN ClusterLabelMap clm ON clm.clusterId = ee.clusterId
+            JOIN Label l ON l.id = clm.labelId
+            WHERE ec.gmailMailboxId = :mailboxId
+              AND ee.clusterId IS NOT NULL
+              AND l.gmailLabelId IS NOT NULL
+              AND ec.messageId IS NOT NULL
+            """)
+    List<Object[]> findGmailLabelIdAndMessageIdByGmailMailboxId(@Param("mailboxId") Long mailboxId);
+
     @Modifying
     @Query("""
             UPDATE EmailEnrichment ee
